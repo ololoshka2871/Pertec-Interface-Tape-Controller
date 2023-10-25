@@ -660,9 +660,9 @@ void IssueTapeCommand( uint16_t What)
     gpio_set( PCMD_GPIO, PCMD_BIT);	// set all bits to one
     if ( cmd2)
       gpio_clear( PCMD_GPIO, cmd2);	// assert the ones
-    gpio_clear( PCTRL_GPIO, PCTRL_CSEL0);
+    gpio_clear( PCTRL_GPIO, PCTRL_CSEL1);
     Delay(1);
-    gpio_set( PCTRL_GPIO, PCTRL_CSEL0);	// latch it in
+    gpio_set( PCTRL_GPIO, PCTRL_CSEL1);	// latch it in
   } // high order bits
 
   if ( cmd1 != (uint8_t) LastCommand)
@@ -674,9 +674,9 @@ void IssueTapeCommand( uint16_t What)
     if ( cmd1)
       gpio_clear( PCMD_GPIO, cmd1);	// assert the ones
   
-    gpio_clear( PCTRL_GPIO, PCTRL_CSEL1);
+    gpio_clear( PCTRL_GPIO, PCTRL_CSEL0);
     Delay(1);				// let the latch settle in
-    gpio_set( PCTRL_GPIO, PCTRL_CSEL1);	// strobe to latch bits
+    gpio_set( PCTRL_GPIO, PCTRL_CSEL0);	// strobe to latch bits
   } // low-order bits
   gpio_clear( PCTRL_GPIO, PCTRL_ENA);	// enable command register
   LastCommand = What;			// remember it
