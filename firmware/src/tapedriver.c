@@ -525,8 +525,8 @@ unsigned int TapeWrite( uint8_t *Buf, int Buflen)
         {
           gpio_set( PCMD_GPIO, PCMD_BIT);	// set all bits to one
           gpio_clear( PCMD_GPIO, PC_ILWD);       // assert last word
-          gpio_clear( PCTRL_GPIO, PCTRL_CSEL1);  // latch it in
-          gpio_set( PCTRL_GPIO, PCTRL_CSEL1);   // strobe to latch bits
+          gpio_clear( PCTRL_GPIO, PCTRL_CSEL0);  // latch it in
+          gpio_set( PCTRL_GPIO, PCTRL_CSEL0);   // strobe to latch bits
         } // if last word
         bcount--;      
       } else
